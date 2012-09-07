@@ -17,13 +17,19 @@ $(document).ready(function(e) {
         var graph_type = graph_types[idx];
         for(j = 0; j < n_tests_per_graph_type; j++) {
             var n_values = rand(8)+2;
+            var b_cast_as_percentage = false;
+            if(graph_type.name == 'pie-graph') {
+                b_cast_as_percentage = (rand(2) == 0);
+            }
+
             var info = [];
             var options = {
                   title: randel(babble)
                 , container: '#'+graph_type.name+j
-                , height: 800
-                , width: 600 
-                , value_format: 'd'
+                , height: 700
+                , width: 500
+                , value_format: b_cast_as_percentage ? '.1f %' : 'd'
+                , b_cast_as_percentage: b_cast_as_percentage
                 , figure_colors: [
                       colors.blue_dark
                     , colors.blue_dark_medium
@@ -51,50 +57,4 @@ $(document).ready(function(e) {
         }
     }
 
-    // var barGraph = new BarGraph(
-    //       [ 
-    //           { label: '8/01', value: 20 }
-    //         , { label: '8/08', value: 33 }
-    //         , { label: '8/15', value: 15 }
-    //         , { label: '8/22', value: 36 }
-    //       ]
-    //     , {
-    //           title: 'Registrations By Week'
-    //         , title_format: ''
-    //         , container: '#test-graph1-container'
-    //         , height: 400
-    //         , width: '100%'
-    //         , value_format: 'd'
-    //         , figure_colors: [
-    //             colors.blue
-    //         ]
-    //         , label_colors: [
-    //             colors.blue_dark
-    //         ]
-    //       }
-    // );
-    // var pieGraph = new PieGraph(
-    //     [ 
-    //           { label: 'online',         value: 0.74 } 
-    //         , { label: 'in-person',      value: 0.20 } 
-    //         , { label: 'paper airplane', value: 0.03 } 
-    //         , { label: 'telepathy',      value: 0.02 } 
-    //         , { label: 'accident',       value: 0.01 }
-    //     ],
-    //     {
-    //           title: 'Registrations By Type'
-    //         , title_format: ''
-    //         , container: '#test-graph2-container'
-    //         , height: 600
-    //         , width: '100%'
-    //         , value_format: '%d'
-    //         , figure_colors: [
-    //               colors.blue_medium_light
-    //             , colors.blue_light_medium
-    //             , colors.blue
-    //             , colors.blue_medium_dark
-    //             , colors.blue_dark
-    //         ]
-    //     }
-    // );
 });
