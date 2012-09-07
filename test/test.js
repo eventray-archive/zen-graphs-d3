@@ -15,10 +15,8 @@ $(document).ready(function(e) {
      
     for(idx = 0; idx < graph_types.length; idx++) {
         var graph_type = graph_types[idx];
-        console.log('i='+idx);
-        console.log(graph_type.name);
         for(j = 0; j < n_tests_per_graph_type; j++) {
-            var n_values = rand(10);
+            var n_values = rand(8)+2;
             var info = [];
             var options = {
                   title: randel(babble)
